@@ -1,4 +1,4 @@
-import { showReviewTotal, populateUser } from "./utils";
+import { showReviewTotal, populateUser } from "./utils.js";
 let isOpen: boolean;
 
 const reviews: {
