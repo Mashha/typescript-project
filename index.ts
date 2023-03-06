@@ -1,8 +1,7 @@
 import { showReviewTotal, populateUser } from "./utils.js";
 import { Permissions, LoyaltyUser } from "./enums.js";
-import { Price, Country } from "./types.js";
 import { getTopTwoReviews } from "./utils.js";
-import Review  from "./interfaces.js";
+import { Review, Property } from "./interfaces.js";
 
 let isLoggedIn: boolean;
 
@@ -49,20 +48,6 @@ const you = {
 // functions
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 populateUser(you.isReturning, you.firstName);
-
-interface Property {
-  image: string;
-  title: string;
-  price: Price;
-  location: {
-    firstLineOfAddress: string;
-    city: string;
-    postcode: number | string;
-    country: Country;
-  };
-  contactDetails: [number, string];
-  isAvailable: boolean;
-}
 
 // properties
 const properties: Property[] = [
@@ -175,24 +160,30 @@ footer.textContent = `${currentLocation[0]} ${currentLocation[1]} ${currentLocat
 
 //classes
 class MainImage {
-  src: string
-  title: string
-  reviews: Review[]
+  src: string;
+  title: string;
+  reviews: Review[];
   constructor(src: string, title: string, reviews: Review[]) {
-    this.src = src
-    this.title = title
-    this.reviews = reviews
+    this.src = src;
+    this.title = title;
+    this.reviews = reviews;
   }
 }
 
-let yourMainProperty = new MainImage("https://static.independent.co.uk/2021/09/29/12/iStock-176431489.jpg?quality=75&width=1200&auto=webp", "Italian house", [{
-  name: "Olive",
-  stars: 5,
-  loyaltyUser: LoyaltyUser.GOLD_USER,
-  date: "12-04-2021"
-}])
+let yourMainProperty = new MainImage(
+  "https://static.independent.co.uk/2021/09/29/12/iStock-176431489.jpg?quality=75&width=1200&auto=webp",
+  "Italian house",
+  [
+    {
+      name: "Olive",
+      stars: 5,
+      loyaltyUser: LoyaltyUser.GOLD_USER,
+      date: "12-04-2021",
+    },
+  ]
+);
 
-const mainImageContainer = document.querySelector('.main-image')
-const image = document.createElement('img')
-image.setAttribute('src', yourMainProperty.src)
-mainImageContainer.appendChild(image)
+const mainImageContainer = document.querySelector(".main-image");
+const image = document.createElement("img");
+image.setAttribute("src", yourMainProperty.src);
+mainImageContainer.appendChild(image);
