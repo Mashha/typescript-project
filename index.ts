@@ -1,5 +1,6 @@
 import { showReviewTotal, populateUser } from "./utils.js";
 import { Permissions, LoyaltyUser } from "./enums.js";
+import { Price, Country } from "./types.js";
 
 let isLoggedIn: boolean;
 
@@ -54,7 +55,7 @@ const properties: {
     firstLineOfAddress: string;
     city: string;
     postcode: number;
-    country: string;
+    country: Country;
   };
   contactDetails: [number, string];
   isAvailable: boolean;
