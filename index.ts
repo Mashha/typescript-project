@@ -6,10 +6,6 @@ let isOpen: boolean;
 const property = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
 
-const GOLD_USER = "GOLD-USER";
-const SILVER_USER = "SILVER-USER";
-const BRONZE_USER = "BRONZE-USER";
-
 const reviews: {
   name: string;
   stars: number;
