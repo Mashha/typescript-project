@@ -108,6 +108,20 @@ const properties: Property[] = [
     contactDetails: [+1123456789, "flat@email.com"],
     isAvailable: true,
   },
+  {
+    image:
+      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/327864037.jpg?k=710cf41398b9086276026e780d85c9698fd420b37dc60262228e42c2999e8ffb&o=&hp=1",
+    title: "Malia hotel",
+    price: 35,
+    location: {
+      firstLineOfAddress: "room 4",
+      city: "Malia",
+      postcode: 45334,
+      country: "Malaysia",
+    },
+    contactDetails: [+1123456789, "lee34@email.com"],
+    isAvailable: false,
+  },
 ];
 
 let authorityStatus: any;
