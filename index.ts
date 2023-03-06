@@ -131,3 +131,5 @@ for (let i = 0; i < properties.length; i++) {
 // location
 let currentLocation: [string, string, number] = ["Ljubljana", "09:48", 3];
 footer.textContent = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`;
+
+
