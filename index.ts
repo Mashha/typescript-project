@@ -1,6 +1,9 @@
 import { showReviewTotal, populateUser } from "./utils.js";
 let isOpen: boolean;
 
+const property = document.querySelector(".properties");
+const footer = document.querySelector(".footer");
+
 const reviews: {
   name: string;
   stars: number;
@@ -56,7 +59,7 @@ const properties: {
     postcode: number;
     country: string;
   };
-  contactDetails: string;
+  contactDetails: [number, string];
   isAvailable: boolean;
 }[] = [
   {
@@ -70,7 +73,7 @@ const properties: {
       postcode: 12345,
       country: "Colombia",
     },
-    contactDetails: "shack@email.com",
+    contactDetails: [+1123456789, "shack@email.com"],
     isAvailable: true,
   },
   {
@@ -84,7 +87,7 @@ const properties: {
       postcode: 16285,
       country: "Poland",
     },
-    contactDetails: "cottagek@email.com",
+    contactDetails: [+1123456789, "cottagek@email.com"],
     isAvailable: false,
   },
   {
@@ -98,20 +101,23 @@ const properties: {
       postcode: 95789,
       country: "United Kingdom",
     },
-    contactDetails: "flat@email.com",
+    contactDetails: [+1123456789, "flat@email.com"],
     isAvailable: true,
   },
 ];
 
-const property = document.querySelector(".properties")
-
-for(let i = 0; i < properties.length; i++){
-  console.log(properties[i])
-  const card = document.createElement("div")
-  card.classList.add("card")
-  card.textContent = properties[i].title
-  const img = document.createElement("img")
-  img.src = properties[i].image
-  card.append(img)
-  property.append(card)
+for (let i = 0; i < properties.length; i++) {
+  console.log(properties[i]);
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.textContent = properties[i].title;
+  const img = document.createElement("img");
+  img.src = properties[i].image;
+  card.append(img);
+  property.append(card);
 }
+
+// use your location, your current time, and the current temperature of your
+// location
+let currentLocation: [string, string, number] = ["Ljubljana", "09:48", 3];
+footer.textContent = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`;
