@@ -61,7 +61,7 @@ const properties: {
 }[] = [
   {
     image:
-      "https://images.unsplash.com/photo-1570793005386-840846445fed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2hhY2t8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+      "https://images.unsplash.com/photo-1518602164578-cd0074062767?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHNoYWNrfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
     title: "Colombian shack",
     price: 45,
     location: {
@@ -102,3 +102,16 @@ const properties: {
     isAvailable: true,
   },
 ];
+
+const property = document.querySelector(".properties")
+
+for(let i = 0; i < properties.length; i++){
+  console.log(properties[i])
+  const card = document.createElement("div")
+  card.classList.add("card")
+  card.textContent = properties[i].title
+  const img = document.createElement("img")
+  img.src = properties[i].image
+  card.append(img)
+  property.append(card)
+}

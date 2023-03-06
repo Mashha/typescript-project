@@ -1,33 +1,51 @@
 body {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial;
-    color: darkgrey;
-    flex-direction: column;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial;
+  color: darkgrey;
+  flex-direction: column;
 }
 
 .container {
-    margin: 20px;
+  margin: 20px;
 }
 
 .nav-bar {
-    width: 100%;
-    position: sticky;
-    background-color: white;
-    box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  position: sticky;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
-    height: 30px;
-    width: 46px;
-    background-size: 47px;
-    background-image: url('https://media.istockphoto.com/id/1077569258/vector/comfortable-sofa-on-white-background.jpg?s=612x612&w=0&k=20&c=deq29gkPksRxEyERW1Cu7OAV7VrLN8RsUIr3uEVDcSQ=');
-    margin: 20px;
+  height: 30px;
+  width: 46px;
+  background-size: 47px;
+  background-image: url("https://media.istockphoto.com/id/1077569258/vector/comfortable-sofa-on-white-background.jpg?s=612x612&w=0&k=20&c=deq29gkPksRxEyERW1Cu7OAV7VrLN8RsUIr3uEVDcSQ=");
+  margin: 20px;
 }
 
 .user-container {
-    margin: 20px;
+  margin: 20px;
+}
+
+.properties {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.card {
+  width: 350px;
+  margin: 5px;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+}
+
+.card img {
+  width: 100%;
 }
