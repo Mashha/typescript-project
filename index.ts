@@ -50,20 +50,22 @@ const you = {
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 populateUser(you.isReturning, you.firstName);
 
-// properties
-const properties: {
+interface Property {
   image: string;
   title: string;
-  price: number;
+  price: Price;
   location: {
     firstLineOfAddress: string;
     city: string;
-    postcode: number;
+    postcode: number | string;
     country: Country;
   };
   contactDetails: [number, string];
   isAvailable: boolean;
-}[] = [
+}
+
+// properties
+const properties: Property[] = [
   {
     image:
       "https://images.unsplash.com/photo-1518602164578-cd0074062767?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHNoYWNrfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
@@ -82,7 +84,7 @@ const properties: {
     image:
       "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y290dGFnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60",
     title: "Polish cottage",
-    price: 34,
+    price: 30,
     location: {
       firstLineOfAddress: "no 27",
       city: "bogota",
@@ -96,7 +98,7 @@ const properties: {
     image:
       "https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80",
     title: "London flat",
-    price: 23,
+    price: 25,
     location: {
       firstLineOfAddress: "flat 15",
       city: "bogota",
@@ -156,3 +158,27 @@ button.addEventListener("click", () => addReviews(reviews));
 // location
 let currentLocation: [string, string, number] = ["Ljubljana", "09:48", 3];
 footer.textContent = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`;
+
+//classes
+class MainImage {
+  src: string
+  title: string
+  reviews: Review[]
+  constructor(src: string, title: string, reviews: Review[]) {
+    this.src = src
+    this.title = title
+    this.reviews = reviews
+  }
+}
+
+let yourMainProperty = new MainImage("https://static.independent.co.uk/2021/09/29/12/iStock-176431489.jpg?quality=75&width=1200&auto=webp", "Italian house", [{
+  name: "Olive",
+  stars: 5,
+  loyaltyUser: LoyaltyUser.GOLD_USER,
+  date: "12-04-2021"
+}])
+
+const mainImageContainer = document.querySelector('.main-image')
+const image = document.createElement('img')
+image.setAttribute('src', yourMainProperty.src)
+mainImageContainer.appendChild(image)
