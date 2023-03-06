@@ -1,7 +1,7 @@
 //this could return null, if you are sure element exists, add ! otherwise make if/else
 
 import { LoyaltyUser } from "./enums.js";
-import { Review } from "./interfaces.js";
+import Review  from "./interfaces.js";
 
 const reviewTotalDisplay = document.querySelector("#reviews")!;
 const returningUserDisplay = document.querySelector("#returning-user")!;

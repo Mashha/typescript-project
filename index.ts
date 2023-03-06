@@ -2,7 +2,7 @@ import { showReviewTotal, populateUser } from "./utils.js";
 import { Permissions, LoyaltyUser } from "./enums.js";
 import { Price, Country } from "./types.js";
 import { getTopTwoReviews } from "./utils.js";
-import { Review } from "./interfaces.js";
+import Review  from "./interfaces.js";
 
 let isLoggedIn: boolean;
 
