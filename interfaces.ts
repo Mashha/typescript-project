@@ -21,3 +21,4 @@ export interface Property {
   contactDetails: [number, string];
   isAvailable: boolean;
 }
+

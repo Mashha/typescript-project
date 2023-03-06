@@ -2,6 +2,7 @@ import { showReviewTotal, populateUser } from "./utils.js";
 import { Permissions, LoyaltyUser } from "./enums.js";
 import { getTopTwoReviews } from "./utils.js";
 import { Review, Property } from "./interfaces.js";
+import MainImage from "./classes.js";
 
 let isLoggedIn: boolean;
 
@@ -158,17 +159,6 @@ button.addEventListener("click", () => addReviews(reviews));
 let currentLocation: [string, string, number] = ["Ljubljana", "09:48", 3];
 footer.textContent = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`;
 
-//classes
-class MainImage {
-  src: string;
-  title: string;
-  reviews: Review[];
-  constructor(src: string, title: string, reviews: Review[]) {
-    this.src = src;
-    this.title = title;
-    this.reviews = reviews;
-  }
-}
 
 let yourMainProperty = new MainImage(
   "https://static.independent.co.uk/2021/09/29/12/iStock-176431489.jpg?quality=75&width=1200&auto=webp",
