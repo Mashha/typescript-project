@@ -1,6 +1,7 @@
 //this could return null, if you are sure element exists, add ! otherwise make if/else
 
 import { LoyaltyUser } from "./enums.js";
+import { Review } from "./interfaces.js";
 
 const reviewTotalDisplay = document.querySelector("#reviews")!;
 const returningUserDisplay = document.querySelector("#returning-user")!;
@@ -39,19 +40,7 @@ export function makeMultiple(value: number): string {
 }
 
 // return is the object itself
-export function getTopTwoReviews(
-  reviews: {
-    name: string;
-    stars: number;
-    loyaltyUser: LoyaltyUser;
-    date: string;
-  }[]
-): {
-  name: string;
-  stars: number;
-  loyaltyUser: LoyaltyUser;
-  date: string;
-}[] {
+export function getTopTwoReviews(reviews: Review[]): Review[] {
   const sortedReviews = reviews.sort((a, b) => b.stars - a.stars);
   return sortedReviews.slice(0, 2);
 }

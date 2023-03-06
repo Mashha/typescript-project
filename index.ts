@@ -2,6 +2,7 @@ import { showReviewTotal, populateUser } from "./utils.js";
 import { Permissions, LoyaltyUser } from "./enums.js";
 import { Price, Country } from "./types.js";
 import { getTopTwoReviews } from "./utils.js";
+import { Review } from "./interfaces.js";
 
 let isLoggedIn: boolean;
 
@@ -12,7 +13,7 @@ const container = document.querySelector(".container");
 const button = document.querySelector("button");
 
 // if object data doesn't match
-const reviews: any[] = [
+const reviews: Review[] = [
   {
     name: "Sheia",
     stars: 5,
@@ -30,7 +31,6 @@ const reviews: any[] = [
     stars: 4,
     loyaltyUser: LoyaltyUser.BRONZE_USER,
     date: "27-03-2021",
-    description: "Great host",
   },
 ];
 
@@ -136,14 +136,7 @@ for (let i = 0; i < properties.length; i++) {
 }
 
 let count = 0;
-function addReviews(
-  array: {
-    name: string;
-    stars: number;
-    loyaltyUser: LoyaltyUser;
-    date: string;
-  }[]
-): void {
+function addReviews(array: Review[]): void {
   if (!count) {
     count++;
     const topTwo = getTopTwoReviews(array);
