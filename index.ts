@@ -1,7 +1,7 @@
 import { showReviewTotal, populateUser } from "./utils.js";
 import { Permissions, LoyaltyUser } from "./enums.js";
 
-let isOpen: boolean;
+let isLoggedIn: boolean;
 
 const property = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
@@ -103,6 +103,17 @@ const properties: {
   },
 ];
 
+let authorityStatus : any
+isLoggedIn = true
+
+function showDetails(authorityStatus: (boolean | Permissions), element : HTMLDivElement, price: number) {
+   if (authorityStatus) {
+       const priceDisplay = document.createElement('div')
+       priceDisplay.innerHTML = price.toString() + '/night'
+       element.appendChild(priceDisplay)
+   }
+}
+
 for (let i = 0; i < properties.length; i++) {
   console.log(properties[i]);
   const card = document.createElement("div");
@@ -112,6 +123,7 @@ for (let i = 0; i < properties.length; i++) {
   img.src = properties[i].image;
   card.append(img);
   property.append(card);
+  showDetails(isLoggedIn, card, properties[i].price)
 }
 
 // use your location, your current time, and the current temperature of your
