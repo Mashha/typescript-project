@@ -1,11 +1,15 @@
 import { showReviewTotal, populateUser } from "./utils.js";
 import { Permissions, LoyaltyUser } from "./enums.js";
 import { Price, Country } from "./types.js";
+import { getTopTwoReviews } from "./utils.js";
 
 let isLoggedIn: boolean;
 
 const property = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
+const reviewContainer = document.querySelector(".reviews");
+const container = document.querySelector(".container");
+const button = document.querySelector("button");
 
 // if object data doesn't match
 const reviews: any[] = [
@@ -26,7 +30,7 @@ const reviews: any[] = [
     stars: 4,
     loyaltyUser: LoyaltyUser.BRONZE_USER,
     date: "27-03-2021",
-    description: "Great host"
+    description: "Great host",
   },
 ];
 
@@ -104,15 +108,19 @@ const properties: {
   },
 ];
 
-let authorityStatus : any
-isLoggedIn = true
+let authorityStatus: any;
+isLoggedIn = true;
 
-function showDetails(authorityStatus: (boolean | Permissions), element : HTMLDivElement, price: number) {
-   if (authorityStatus) {
-       const priceDisplay = document.createElement('div')
-       priceDisplay.innerHTML = price.toString() + '/night'
-       element.appendChild(priceDisplay)
-   }
+function showDetails(
+  authorityStatus: boolean | Permissions,
+  element: HTMLDivElement,
+  price: number
+) {
+  if (authorityStatus) {
+    const priceDisplay = document.createElement("div");
+    priceDisplay.innerHTML = price.toString() + "/night";
+    element.appendChild(priceDisplay);
+  }
 }
 
 for (let i = 0; i < properties.length; i++) {
@@ -124,12 +132,34 @@ for (let i = 0; i < properties.length; i++) {
   img.src = properties[i].image;
   card.append(img);
   property.append(card);
-  showDetails(isLoggedIn, card, properties[i].price)
+  showDetails(isLoggedIn, card, properties[i].price);
 }
+
+let count = 0;
+function addReviews(
+  array: {
+    name: string;
+    stars: number;
+    loyaltyUser: LoyaltyUser;
+    date: string;
+  }[]
+): void {
+  if (!count) {
+    count++;
+    const topTwo = getTopTwoReviews(array);
+    for (let i = 0; i < topTwo.length; i++) {
+      const card = document.createElement("div");
+      card.classList.add("review-card");
+      card.textContent = `${topTwo[i].stars} stars from ${topTwo[i].name}`;
+      reviewContainer.append(card);
+    }
+    container.removeChild(button);
+  }
+}
+
+button.addEventListener("click", () => addReviews(reviews));
 
 // use your location, your current time, and the current temperature of your
 // location
 let currentLocation: [string, string, number] = ["Ljubljana", "09:48", 3];
 footer.textContent = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`;
-
-

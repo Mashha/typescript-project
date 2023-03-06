@@ -14,7 +14,9 @@ export function showReviewTotal(
 ): void {
   let star = LoyaltyUser.GOLD_USER ? "⭐" : "";
 
-  reviewTotalDisplay.textContent = `${value.toString()} Review${makeMultiple(value)} | last reviewed by ${name} ${star}`;
+  reviewTotalDisplay.textContent = `${value.toString()} Review${makeMultiple(
+    value
+  )} | last reviewed by ${name} ${star}`;
 }
 
 export function populateUser(isReturning: boolean, userName: string) {
@@ -24,14 +26,32 @@ export function populateUser(isReturning: boolean, userName: string) {
   userNameDisplay.innerHTML = userName;
 }
 
-export function add(firstValue: number, secondValue: number) : number {
+export function add(firstValue: number, secondValue: number): number {
   return firstValue + secondValue;
 }
 
-export function makeMultiple(value: number) : string {
+export function makeMultiple(value: number): string {
   if (value > 1 || value === 0) {
     return "s";
   } else {
-    return ""
+    return "";
   }
+}
+
+// return is the object itself
+export function getTopTwoReviews(
+  reviews: {
+    name: string;
+    stars: number;
+    loyaltyUser: LoyaltyUser;
+    date: string;
+  }[]
+): {
+  name: string;
+  stars: number;
+  loyaltyUser: LoyaltyUser;
+  date: string;
+}[] {
+  const sortedReviews = reviews.sort((a, b) => b.stars - a.stars);
+  return sortedReviews.slice(0, 2);
 }
