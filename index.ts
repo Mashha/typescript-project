@@ -6,12 +6,8 @@ let isOpen: boolean;
 const property = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
 
-const reviews: {
-  name: string;
-  stars: number;
-  loyaltyUser: LoyaltyUser;
-  date: string;
-}[] = [
+// if object data doesn't match
+const reviews: any[] = [
   {
     name: "Sheia",
     stars: 5,
@@ -29,6 +25,7 @@ const reviews: {
     stars: 4,
     loyaltyUser: LoyaltyUser.BRONZE_USER,
     date: "27-03-2021",
+    description: "Great host"
   },
 ];
 
