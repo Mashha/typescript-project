@@ -1,32 +1,39 @@
 "use strict";
 exports.__esModule = true;
 var utils_js_1 = require("./utils.js");
+var enums_js_1 = require("./enums.js");
 var isOpen;
 var property = document.querySelector(".properties");
 var footer = document.querySelector(".footer");
+var GOLD_USER = "GOLD-USER";
+var SILVER_USER = "SILVER-USER";
+var BRONZE_USER = "BRONZE-USER";
 var reviews = [
     {
         name: "Sheia",
         stars: 5,
-        loyaltyUser: true,
+        loyaltyUser: enums_js_1.LoyaltyUser.GOLD_USER,
         date: "01-04-2021"
     },
     {
         name: "Andrzej",
         stars: 3,
-        loyaltyUser: false,
+        loyaltyUser: enums_js_1.LoyaltyUser.SILVER_USER,
         date: "28-03-2021"
     },
     {
         name: "Omar",
         stars: 4,
-        loyaltyUser: true,
+        loyaltyUser: enums_js_1.LoyaltyUser.BRONZE_USER,
         date: "27-03-2021"
     },
 ];
+var ADMIN = "admin";
+var READ_ONLY = "read-only";
 var you = {
     firstName: "Bobby",
     lastName: "Brock",
+    permissions: enums_js_1.Permissions.ADMIN,
     age: 45,
     isReturning: true,
     stayedAt: ["Florida-home", "oman-flat", "tokyo-bungalow"]

@@ -1,44 +1,48 @@
 import { showReviewTotal, populateUser } from "./utils.js";
+import { Permissions, LoyaltyUser } from "./enums.js";
+
 let isOpen: boolean;
 
 const property = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
 
+const GOLD_USER = "GOLD-USER";
+const SILVER_USER = "SILVER-USER";
+const BRONZE_USER = "BRONZE-USER";
+
 const reviews: {
   name: string;
   stars: number;
-  loyaltyUser: boolean;
+  loyaltyUser: LoyaltyUser;
   date: string;
 }[] = [
   {
     name: "Sheia",
     stars: 5,
-    loyaltyUser: true,
+    loyaltyUser: LoyaltyUser.GOLD_USER,
     date: "01-04-2021",
   },
   {
     name: "Andrzej",
     stars: 3,
-    loyaltyUser: false,
+    loyaltyUser: LoyaltyUser.SILVER_USER,
     date: "28-03-2021",
   },
   {
     name: "Omar",
     stars: 4,
-    loyaltyUser: true,
+    loyaltyUser: LoyaltyUser.BRONZE_USER,
     date: "27-03-2021",
   },
 ];
 
-const you: {
-  firstName: string;
-  lastName: string;
-  age: number;
-  isReturning: boolean;
-  stayedAt: string[];
-} = {
+const ADMIN = "admin";
+const READ_ONLY = "read-only";
+
+const you = {
   firstName: "Bobby",
   lastName: "Brock",
+  permissions: Permissions.ADMIN,
   age: 45,
   isReturning: true,
   stayedAt: ["Florida-home", "oman-flat", "tokyo-bungalow"],
